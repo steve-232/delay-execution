@@ -1,0 +1,34 @@
+{
+  "name": "delay-execution",
+  "version": "1.0.0",
+  "description": "Run a custom function, after passed HTMLElement is in the viewpoint of the window.",
+  "scripts": {
+    "dev": "NODE_ENV=dev gulp",
+    "dev:win": "set NODE_ENV=dev&gulp",
+    "prod": "NODE_ENV=production gulp",
+    "prod:win": "set NODE_ENV=production&gulp"
+  },
+  "author": {
+    "name": "steve-232",
+    "email": "steve232np@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steve-232/delay-execution"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.7.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-webserver": "^0.9.1"
+  }
+}
