@@ -10,7 +10,7 @@ const env = process.env.NODE_ENV;
 const isProduction = env === 'production';
 
 function js() {
-  return src('src/js/*.js')
+  return src('src/*.js')
     .pipe(babel({
       presets: ['@babel/env'],
       plugins: ['@babel/plugin-proposal-class-properties'],
@@ -21,11 +21,11 @@ function js() {
       compress: isProduction,
       mangle: isProduction,
     }))
-    .pipe(dest('prod/js'));
+    .pipe(dest('./'));
 }
 
 function server() {
-  return src('prod')
+  return src('./')
     .pipe(webserver({
       open: true,
       livereload: true,
@@ -34,7 +34,7 @@ function server() {
 
 function watchFiles() {
   js();
-  watch('src/js/*.js', js);
+  watch('src/*.js', js);
 }
 
 if (!isProduction) server();
