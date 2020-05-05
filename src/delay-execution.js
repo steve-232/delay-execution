@@ -4,6 +4,7 @@ class DelayExecution {
   constructor({
     elem = null,
     func = null,
+    direction = 'v',
     pixelDelay = 0,
     timeDelay = 0,
     includeElemHeight = true,
@@ -13,7 +14,7 @@ class DelayExecution {
     if (!(func instanceof Function)) throw new Error('"func" is not Function');
 
     this.settings = {
-      elem, func, pixelDelay, timeDelay, includeElemHeight, debounce,
+      elem, func, direction, pixelDelay, timeDelay, includeElemHeight, debounce,
     };
 
     window.addEventListener('scroll', this.checkPosition);
@@ -23,14 +24,19 @@ class DelayExecution {
   }
 
   getElemPosition = () => {
-    const { elem } = this.settings;
-    this.elemPosition = elem.offsetTop + this.settings.pixelDelay;
+    const { elem, direction, includeElemHeight } = this.settings;
+    this.elemPosition = direction === 'v' ? elem.offsetTop : elem.offsetLeft;
 
-    if (this.settings.includeElemHeight) this.elemPosition += elem.offsetHeight;
+    if (includeElemHeight) this.elemPosition += elem.offsetHeight;
+  }
+
+  getWindowPosition = () => {
+    if (this.settings.direction !== 'v') return window.innerWidth + window.scrollX;
+    return window.innerHeight + window.scrollY;
   }
 
   checkPosition = () => {
-    if ((window.innerHeight + window.scrollY) >= this.elemPosition) {
+    if (this.getWindowPosition() >= this.elemPosition) {
       window.removeEventListener('scroll', this.checkPosition);
       window.removeEventListener('resize', this.followWindowResizing);
 
