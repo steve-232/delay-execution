@@ -1,5 +1,5 @@
 # Delay Execution
-Run a custom function, after passed HTMLElement is in the viewpoint of the window.
+Run a custom function, after passed HTMLElement is in the viewpoint of the window or HTMLElement.
 
 ## Installation
 Download and include `delay-execution.min.js` in your HTML file.
@@ -39,6 +39,18 @@ new DelayExecution({
     <td>function</td>
     <td>null</td>
     <td>Function to be invoked.</td>
+  </tr>
+  <tr>
+    <td>direction</td>
+    <td>string</td>
+    <td>h</td>
+    <td>Direction of scrolling, horizontal (h) or vertical (v).</td>
+  </tr>
+  <tr>
+    <td>parent</td>
+    <td>HTMLElement / window</td>
+    <td>window</td>
+    <td>Follow "scroll" event on this element..</td>
   </tr>
   <tr>
     <td>pixelDelay</td>
