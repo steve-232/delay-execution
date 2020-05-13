@@ -54,17 +54,78 @@ textarea {
   resize: none;
 }
 body {
-  height: 3000px;
+  padding-top: 1px;
+  margin-top: 1px;
 }
-#box {
+.title {
+  margin-bottom: 14px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.cell {
+  margin: 40px 20px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  border: 1px solid #ccc;
+}
+.cell pre {
+  margin-bottom: 20px;
+  padding: 20px 0 10px;
+  background-color: #ddd;
+}
+
+
+/* Example 1 */
+.example-1 {
+  height: 200px;
+  overflow-y: scroll;
+  border: 2px solid #999;
+}
+.example-1-child {
+  width: 50px;
+  margin: 500px 0;
+  height: 100px;
+  background-color: #f00;
+  transition: width 500ms linear;
+}
+.example-1-child.active {
+  width: 100%;
+}
+
+/* Example 2 */
+.example-2 {
+  height: 200px;
+  overflow-x: scroll;
+  border: 2px solid #999;
+}
+.example-2-child {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 0 100vw;
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+  background-color: #f00;
+  transition: all 200ms linear;
+}
+.example-2-child.active {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/* Example 3 */
+.example-3 {
   width: 200px;
   height: 200px;
-  margin: 1000px auto 0;
+  margin: 700px auto;
   background-color: #f00;
   border: 10px solid #09f;
   transition: all 250ms linear 10ms;
 }
-#box.active {
+.example-3.active {
   width: 100px;
   height: 100px;
   background-color: #09f;

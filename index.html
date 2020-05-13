@@ -8,18 +8,101 @@
 </head>
 <body>
 
-<div id="box"></div>
+<div class="cell">
+	<h2 class="title">Delay Execution - example 1</h2> 
+	<pre>
+		const example1 = document.querySelector('.example-1');
+		const example1child = document.querySelector('.example-1-child');
+	
+		new DelayExecution({ 
+			elem: example1child,
+			func: () => {
+				example1child.classList.add('active')
+			},
+			parent: example1
+		});
+	</pre>
+
+	<div class="example-1">
+		<div class="example-1-child"></div>
+	</div>
+</div>
+
+<div class="cell">
+	<h2 class="title">Delay Execution - example 2</h2>
+	<pre>
+		const example2 = document.querySelector('.example-2');
+		const example2child = document.querySelector('.example-2-child');
+
+		new DelayExecution({ 
+			elem: example2child,
+			func: () => {
+				example2child.classList.add('active')
+			},
+			parent: example2,
+			direction: 'h',
+			pixelDelay: 150
+		});
+	</pre>
+	<div class="example-2">
+		<div class="example-2-child"></div>
+	</div>	
+</div>
+
+<div class="cell">
+	<h2 class="title">Delay Execution - example 2</h2>
+	<pre>
+		const example3 = document.querySelector('.example-3');
+
+		new DelayExecution({ 
+			elem: example3,
+			func: () => {
+				example3.classList.add('active')
+			},
+		});
+	</pre>
+	<div class="example-3"></div>	
+</div>
 
 <script src="./delay-execution.min.js"></script>
 <script type="text/javascript">
-	const box = document.getElementById('box');
+	
+	// Example 1
+	const example1 = document.querySelector('.example-1');
+	const example1child = document.querySelector('.example-1-child');
 
 	new DelayExecution({ 
-		elem: box,
+		elem: example1child,
 		func: () => {
-			box.classList.add('active')
+			example1child.classList.add('active')
+		},
+		parent: example1
+	});
+
+	// Example 2
+	const example2 = document.querySelector('.example-2');
+	const example2child = document.querySelector('.example-2-child');
+
+	new DelayExecution({ 
+		elem: example2child,
+		func: () => {
+			example2child.classList.add('active')
+		},
+		parent: example2,
+		direction: 'h',
+		pixelDelay: 150
+	});
+
+	// Example 3
+	const example3 = document.querySelector('.example-3');
+
+	new DelayExecution({ 
+		elem: example3,
+		func: () => {
+			example3.classList.add('active')
 		},
 	});
+
 </script>
 </body>
 </html>
