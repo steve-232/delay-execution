@@ -21,13 +21,13 @@ class DelayExecution {
     // eslint-disable-next-line no-param-reassign
     if (parent.constructor.name !== 'Window' && getComputedStyle(parent).getPropertyValue('position') === 'static') parent.style.position = 'relative';
 
-    parent.addEventListener('scroll', this.checkPosition);
+    parent.addEventListener('scroll', this.checkPosition.bind(this));
     this.getElemPosition();
     this.checkPosition();
-    parent.addEventListener('resize', this.followWindowResizing);
+    parent.addEventListener('resize', this.followWindowResizing.bind(this));
   }
 
-  getElemPosition = () => {
+  getElemPosition() {
     const {
       elem,
       direction,
@@ -39,25 +39,25 @@ class DelayExecution {
     if (includeElemHeight) this.elemPosition += elem.offsetHeight;
   }
 
-  getParentPosition = () => {
+  getParentPosition() {
     const { direction, parent } = this.settings;
 
     if (direction !== 'v') return parent.constructor.name === 'Window' ? window.innerWidth + window.scrollX : parent.clientWidth + parent.scrollLeft;
     return parent.constructor.name === 'Window' ? window.innerHeight + window.scrollY : parent.clientHeight + parent.scrollTop;
   }
 
-  checkPosition = () => {
+  checkPosition() {
     const { func, timeDelay, parent } = this.settings;
 
     if (this.getParentPosition() >= this.elemPosition) {
-      parent.removeEventListener('scroll', this.checkPosition);
-      parent.removeEventListener('resize', this.followWindowResizing);
+      parent.removeEventListener('scroll', this.checkPosition.bind(this));
+      parent.removeEventListener('resize', this.followWindowResizing.bind(this));
 
       setTimeout(func, timeDelay);
     }
   }
 
-  followWindowResizing = () => {
+  followWindowResizing() {
     clearTimeout(this.followWindowResizingTimeout);
     this.followWindowResizingTimeout = setTimeout(this.getElemPosition, this.settings.debounce);
   }
